@@ -1,0 +1,22 @@
+<%- include("header") -%>
+<div class="box" id="heading">
+    <h1><%= listTitle %></h1>
+    </div>
+    <div class="box">
+        <% newItems.forEach((item) => { %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="_id" value="<%= item._id %>" onChange="this.form.submit()">
+                    <p><%= item.name %></p>
+                    <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+                </div>
+            </form>
+        <% }); %>
+    <form class="item" action="/" method="post">
+            <input type ="text" name="newItem" placeholder="Add Task" autocomplete="off">
+            <button type ="submit" name="list" value= <%= listTitle %>>+</button>
+            <!-- inside button the value will only store characters up till a space. for example if listTitle = "Work List" value will only store Work-->
+    </form>
+</div>
+<%- include("footer") -%>
+
