@@ -5,16 +5,16 @@ const mongoose = require('mongoose');
 const date  = require(__dirname + '/public/module/date');
 const _ = require('lodash');
 
-const app = express(); 
+const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 // Static Middleware
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://127.0.0.1:27017/todoListDB', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://kumaryogesh:GBtb4d6cWMsoZ8Os@cluster1.fljuspy.mongodb.net/todoListDB', {useNewUrlParser: true});
 
 const itemSchema = new mongoose.Schema({
-    name: String 
+    name: String
 });
 const Item = mongoose.model("Item", itemSchema);
 const listSchema = {
@@ -81,7 +81,7 @@ app.get('/:customListName', (req, res) => {
                     name: customListName,
                     items: []
                 });
-                list.save(); 
+                list.save();
                 res.redirect('/' + customListName);
             } else {
                 // List Already Exist
@@ -94,5 +94,3 @@ app.get('/:customListName', (req, res) => {
 app.listen(3000, () => {
     console.log("Connected Successfully to port :: 3000");
 });
-
-
