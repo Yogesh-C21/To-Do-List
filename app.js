@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Static Middleware
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb+srv://kumaryogesh:GBtb4d6cWMsoZ8Os@cluster1.fljuspy.mongodb.net/todoListDB', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://<user>:<pass>@cluster1.fljuspy.mongodb.net/todoListDB', {useNewUrlParser: true});
 
 const itemSchema = new mongoose.Schema({
     name: String
